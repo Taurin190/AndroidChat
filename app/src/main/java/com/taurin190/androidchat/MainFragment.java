@@ -14,6 +14,9 @@ public class MainFragment extends Fragment implements MainContract.View  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        MainRepository repository = new MainRepository();
+        presenter = new MainPresenter(repository, this);
+        presenter.loadRoomCollection();
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
