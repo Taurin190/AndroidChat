@@ -7,4 +7,9 @@ public class MainPresenter implements MainContract.Presenter {
         this.mainInteractor = interactor;
         this.mainView = view;
     }
+
+    @Override
+    public void loadRoomCollection() {
+
+    }
 }
