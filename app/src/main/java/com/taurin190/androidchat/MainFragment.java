@@ -7,23 +7,33 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.taurin190.androidchat.databinding.FragmentMainBinding;
+
 import java.util.Collection;
 
 public class MainFragment extends Fragment implements MainContract.View  {
     private MainContract.Presenter presenter;
 
-    private TextView textView;
+    private FragmentMainBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        binding = FragmentMainBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
         MainRepository repository = new MainRepository();
         presenter = new MainPresenter(repository, this);
         presenter.loadRoomCollection();
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
-        textView = (TextView) view.findViewById(R.id.textView);
-        textView.setText("Initial Text");
+
+        binding.textView.setText("Initial Text");
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
@@ -34,6 +44,6 @@ public class MainFragment extends Fragment implements MainContract.View  {
     @Override
     public void renderRoomCollection(Collection<Room> room) {
         System.out.println();
-        textView.setText("Room Size" + room.size());
+        binding.textView.setText("Room Size" + room.size());
     }
 }
