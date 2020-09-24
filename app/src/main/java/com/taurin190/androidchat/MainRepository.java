@@ -1,14 +1,15 @@
 package com.taurin190.androidchat;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 
 import rx.Observable;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class MainRepository {
-    public Observable<Collection<Room>> getRoomCollection() {
+    public Observable<List<Room>> getRoomList() {
         return Observable.create((sub) -> {
             AsyncTask task = new AsyncTask() {
                 @Override
@@ -21,7 +22,7 @@ public class MainRepository {
                     ArrayList<Room> roomList = new ArrayList<>();
                     roomList.add(new Room(
                             1,
-                            "http://test.com/a.jpg",
+                            Uri.parse("https://source.unsplash.com/user/erondu/1600x900"),
                             "ROOM 1",
                             "最後のメッセージ",
                             "昨日"));

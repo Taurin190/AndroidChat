@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var fragment = MainFragment()
-        var transaction = getSupportFragmentManager().beginTransaction()
+
+        val fragment = MainFragment()
+        val transaction = supportFragmentManager.beginTransaction()
         transaction.add(R.id.container, fragment)
         transaction.commit()
     }

@@ -12,10 +12,10 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void loadRoomCollection() {
-        mainRepository.getRoomCollection()
+        mainRepository.getRoomList()
                 .observeOn(Schedulers.newThread())
-                .subscribe(roomCollection -> {
-                    mainView.renderRoomCollection(roomCollection);
+                .subscribe(roomList -> {
+                    mainView.renderRoomCollection(roomList);
                 });
     }
 }

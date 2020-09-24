@@ -1,11 +1,11 @@
 package com.taurin190.androidchat;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface MainContract {
     interface View {
         void showEmptyCase();
-        void renderRoomCollection(final Collection<Room> room);
+        void renderRoomCollection(final List<Room> room);
     }
 
     interface Presenter {
