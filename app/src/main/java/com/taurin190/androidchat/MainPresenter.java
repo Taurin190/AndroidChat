@@ -1,6 +1,6 @@
 package com.taurin190.androidchat;
 
-import rx.schedulers.Schedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MainPresenter implements MainContract.Presenter {
     private MainRepository mainRepository;
@@ -13,7 +13,7 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void loadRoomCollection() {
         mainRepository.getRoomList()
-                .observeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(roomList -> {
                     mainView.renderRoomCollection(roomList);
                 });

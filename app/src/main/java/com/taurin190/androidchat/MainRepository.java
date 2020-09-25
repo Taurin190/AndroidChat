@@ -3,10 +3,11 @@ package com.taurin190.androidchat;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import rx.Observable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 public class MainRepository {
     public Observable<List<Room>> getRoomList() {
@@ -27,7 +28,7 @@ public class MainRepository {
                             "最後のメッセージ",
                             "昨日"));
                     sub.onNext(roomList);
-                    sub.onCompleted();
+                    sub.onComplete();
                     return objects[0];
                 }
             };

@@ -34,10 +34,11 @@ public class MainFragment extends Fragment implements MainContract.View {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        handler = new Handler();
         MainRepository repository = new MainRepository();
         presenter = new MainPresenter(repository, this);
         presenter.loadRoomCollection();
-        handler = new Handler();
+
 
         return view;
     }
@@ -66,11 +67,6 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     @Override
     public void renderRoomCollection(List<Room> room) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                adapter.setRoomList(room);
-            }
-        });
+        adapter.setRoomList(room);
     }
 }
