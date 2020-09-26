@@ -64,4 +64,9 @@ public class MainFragment extends Fragment implements MainContract.View {
     public void renderRoomCollection(List<Room> room) {
         adapter.setRoomList(room);
     }
+
+    @Override
+    public void moveRoomDetail(Room room) {
+
+    }
 }

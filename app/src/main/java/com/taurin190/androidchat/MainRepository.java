@@ -26,13 +26,43 @@ public class MainRepository {
                             Uri.parse("https://source.unsplash.com/user/erondu/1600x900"),
                             "ROOM 1",
                             "最後のメッセージ",
-                            "昨日"));
+                            "昨日",
+                            new ArrayList<>()));
                     sub.onNext(roomList);
                     sub.onComplete();
                     return objects[0];
                 }
             };
             task.execute(0);
+        });
+    }
+
+    public Observable<Room> getRoomDetail(int roomId) {
+        return Observable.create((sub) -> {
+            AsyncTask task = new AsyncTask() {
+                @Override
+                protected Object doInBackground(Object[] objects) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    List<Chat> chatList = new ArrayList<>();
+                    chatList.add(new Chat("aaa"));
+                    chatList.add(new Chat("bbb"));
+                    chatList.add(new Chat("ccc"));
+                    Room roomDetail = new Room(
+                            roomId,
+                            Uri.parse("https://source.unsplash.com/user/erondu/1600x900"),
+                            "ROOM 1",
+                            "最後のメッセージ",
+                            "昨日",
+                            chatList);
+                    sub.onNext(roomDetail);
+                    sub.onComplete();
+                    return objects[0];
+                }
+            };
         });
     }
 }

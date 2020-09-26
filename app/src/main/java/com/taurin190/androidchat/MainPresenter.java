@@ -23,6 +23,10 @@ public class MainPresenter implements MainContract.Presenter, View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
+        mainRepository.getRoomDetail(1)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(room -> {
+                    mainView.moveRoomDetail(room);
+                });
     }
 }

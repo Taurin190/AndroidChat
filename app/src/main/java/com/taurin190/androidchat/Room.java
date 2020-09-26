@@ -2,6 +2,8 @@ package com.taurin190.androidchat;
 
 import android.net.Uri;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -13,5 +15,5 @@ public class Room {
     private String title;
     private String lastMessage;
     private String lastUpdate;
-
+    private List<Chat> chatList;
 }

@@ -6,6 +6,7 @@ public interface MainContract {
     interface View {
         void showEmptyCase();
         void renderRoomCollection(final List<Room> room);
+        void moveRoomDetail(Room room);
     }
 
     interface Presenter {
