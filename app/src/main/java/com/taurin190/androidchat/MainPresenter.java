@@ -1,8 +1,10 @@
 package com.taurin190.androidchat;
 
+import android.view.View;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
-public class MainPresenter implements MainContract.Presenter {
+public class MainPresenter implements MainContract.Presenter, View.OnClickListener {
     private MainRepository mainRepository;
     private MainContract.View mainView;
     public MainPresenter(MainRepository repository, MainContract.View view) {
@@ -17,5 +19,10 @@ public class MainPresenter implements MainContract.Presenter {
                 .subscribe(roomList -> {
                     mainView.renderRoomCollection(roomList);
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

@@ -14,7 +14,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
     private LayoutInflater inflater;
     private List<Room> list;
     private Context context;
-    private int resource;
+    private View.OnClickListener listener;
 
     public RoomListAdapter(Context context, List<Room> roomList) {
         this.inflater = LayoutInflater.from(context);
@@ -26,6 +26,10 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
         this.list.clear();
         this.list.addAll(list);
         notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -42,6 +46,14 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
         roomViewHolder.icon.setImageResource(R.mipmap.ic_launcher);
         roomViewHolder.title.setText(list.get(position).getTitle());
         roomViewHolder.content.setText(list.get(position).getLastMessage());
+        roomViewHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onClick(v);
+                }
+            }
+        });
     }
 
     @Override
