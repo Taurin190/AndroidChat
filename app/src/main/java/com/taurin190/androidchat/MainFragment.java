@@ -2,7 +2,6 @@ package com.taurin190.androidchat;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,19 +25,14 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     private List<Room> roomList;
 
-    Handler handler;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-
-        handler = new Handler();
         MainRepository repository = new MainRepository();
         presenter = new MainPresenter(repository, this);
         presenter.loadRoomCollection();
-
 
         return view;
     }
