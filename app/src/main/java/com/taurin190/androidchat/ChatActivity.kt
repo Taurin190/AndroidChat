@@ -13,6 +13,11 @@ class ChatActivity : AppCompatActivity() {
         actionBar!!.setDisplayHomeAsUpEnabled(true)
         val room: Room = intent.getSerializableExtra(MainFragment.ROOM_DETAIL) as Room
         actionBar.setTitle(room.getTitle())
+
+        val fragment = ChatFragment.newInstance(room)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.container, fragment)
+        transaction.commit()
     }
 
     override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
