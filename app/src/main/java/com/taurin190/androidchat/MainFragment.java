@@ -1,6 +1,8 @@
 package com.taurin190.androidchat;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainFragment extends Fragment implements MainContract.View {
+    public static final String ROOM_DETAIL = "room_detail";
+
     private MainContract.Presenter presenter;
 
     private FragmentMainBinding binding;
@@ -24,6 +28,8 @@ public class MainFragment extends Fragment implements MainContract.View {
     private Context context = null;
 
     private List<Room> roomList;
+
+    private MainFragmentListener listener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +62,14 @@ public class MainFragment extends Fragment implements MainContract.View {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof MainFragmentListener) {
+            listener = (MainFragmentListener) context;
+        }
+    }
+
+    @Override
     public void showEmptyCase() {
 
     }
@@ -66,7 +80,12 @@ public class MainFragment extends Fragment implements MainContract.View {
     }
 
     @Override
-    public void moveRoomDetail(Room room) {
-
+    public void moveRoomDetail(int roomId) {
+        Room room = roomList.stream().filter(r ->
+                    roomId == r.getRoomId()
+                ).findFirst().orElse(null);
+        if (listener != null) {
+            listener.moveRoomDetail(room);
+        }
     }
 }

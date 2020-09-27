@@ -23,7 +23,7 @@ public class MainRepository {
                     ArrayList<Room> roomList = new ArrayList<>();
                     roomList.add(new Room(
                             1,
-                            Uri.parse("https://source.unsplash.com/user/erondu/1600x900"),
+                            "https://source.unsplash.com/user/erondu/1600x900",
                             "ROOM 1",
                             "最後のメッセージ",
                             "昨日",
@@ -53,7 +53,7 @@ public class MainRepository {
                     chatList.add(new Chat("ccc"));
                     Room roomDetail = new Room(
                             roomId,
-                            Uri.parse("https://source.unsplash.com/user/erondu/1600x900"),
+                            "https://source.unsplash.com/user/erondu/1600x900",
                             "ROOM 1",
                             "最後のメッセージ",
                             "昨日",
