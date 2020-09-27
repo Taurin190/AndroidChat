@@ -17,4 +17,9 @@ public class Room implements Serializable {
     private String lastMessage;
     private String lastUpdate;
     private List<Chat> chatList;
+
+    // ToDo remove this method. temporary added because lombok seems not to work from kotlin
+    public String getTitle() {
+        return title;
+    }
 }
