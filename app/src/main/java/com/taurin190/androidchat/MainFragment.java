@@ -71,11 +71,13 @@ public class MainFragment extends Fragment implements MainContract.View {
 
     @Override
     public void showEmptyCase() {
-
+        binding.progressBar.setVisibility(View.GONE);
+        binding.emptyMessage.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void renderRoomCollection(List<Room> room) {
+        binding.centerMessage.setVisibility(View.GONE);
         adapter.setRoomList(room);
     }
 
