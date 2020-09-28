@@ -10,6 +10,16 @@ import java.util.List;
 import io.reactivex.Observable;
 
 public class MainRepository {
+    static MainRepository instance;
+
+    private MainRepository() {}
+
+    public static MainRepository getInstance() {
+        if (instance == null) {
+            instance = new MainRepository();
+        }
+        return instance;
+    }
     public Observable<List<Room>> getRoomList() {
         return Observable.create((sub) -> {
             AsyncTask task = new AsyncTask() {
@@ -63,6 +73,7 @@ public class MainRepository {
                     return objects[0];
                 }
             };
+            task.execute(0);
         });
     }
 }

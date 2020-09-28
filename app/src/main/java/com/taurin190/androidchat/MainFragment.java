@@ -36,7 +36,7 @@ public class MainFragment extends Fragment implements MainContract.View {
         super.onCreateView(inflater, container, savedInstanceState);
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        MainRepository repository = new MainRepository();
+        MainRepository repository = MainRepository.getInstance();
         presenter = new MainPresenter(repository, this);
         presenter.loadRoomCollection();
 

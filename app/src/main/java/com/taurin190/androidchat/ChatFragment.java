@@ -6,9 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ChatFragment extends Fragment {
+import com.taurin190.androidchat.databinding.FragmentChatBinding;
+import com.taurin190.androidchat.databinding.FragmentMainBinding;
+
+public class ChatFragment extends Fragment implements ChatContract.View {
     private static final String ARG_PARAM = "room";
+
+    private ChatContract.Presenter presenter;
+
     private Room room;
+
+    private FragmentChatBinding binding;
 
     public ChatFragment() {
     }
@@ -32,7 +40,16 @@ public class ChatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat, container, false);
+        binding = FragmentChatBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        MainRepository repository = MainRepository.getInstance();
+        this.presenter = new ChatPresenter(repository, this);
+        this.presenter.loadRoomDetail(this.room);
+        return view;
+    }
+
+    @Override
+    public void renderMessage(Room room) {
+        binding.textview.setText(room.getLastMessage());
     }
 }
