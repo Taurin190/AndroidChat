@@ -1,13 +1,19 @@
 package com.taurin190.androidchat;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChatFragment extends Fragment implements ChatContract.View {
     private static final String ARG_PARAM = "room";
@@ -17,6 +23,12 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     private Room room;
 
     private FragmentChatBinding binding;
+
+    private ChatListAdapter adapter;
+
+    private List<Chat> chatList;
+
+    private Context context;
 
     public ChatFragment() {
     }
@@ -42,6 +54,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
                              Bundle savedInstanceState) {
         binding = FragmentChatBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
         MainRepository repository = MainRepository.getInstance();
         this.presenter = new ChatPresenter(repository, this);
         this.presenter.loadRoomDetail(this.room);
@@ -49,7 +62,19 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     }
 
     @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        this.context = getActivity().getBaseContext();
+        this.chatList = new ArrayList<Chat>();
+        adapter = new ChatListAdapter(this.context, this.chatList);
+        RecyclerView listView = (RecyclerView) binding.chatListview;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this.context);
+        listView.setLayoutManager(layoutManager);
+        listView.setAdapter(adapter);
+    }
+
+    @Override
     public void renderMessage(Room room) {
-        binding.textview.setText(room.getLastMessage());
+        binding.centerMessage.setVisibility(View.GONE);
+        adapter.setChatList(room.getChatList());
     }
 }
