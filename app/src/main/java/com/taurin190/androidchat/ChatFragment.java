@@ -75,6 +75,8 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     @Override
     public void renderMessage(Room room) {
         binding.centerMessage.setVisibility(View.GONE);
+        binding.inputLayout.setVisibility(View.VISIBLE);
+        binding.chatListview.setVisibility(View.VISIBLE);
         adapter.setChatList(room.getChatList());
     }
 }
