@@ -37,11 +37,17 @@
         android:elevation="4dp"
         android:layout_alignParentBottom="true">
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:padding="2dp"
             android:layout_margin="5dp"
             android:background="@drawable/shape_for_edit_text_rounded_corners_5dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@drawable/ic_baseline_send_24"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
