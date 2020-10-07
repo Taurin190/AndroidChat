@@ -1,8 +1,10 @@
 package com.taurin190.androidchat;
 
+import android.view.View;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
-public class ChatPresenter implements ChatContract.Presenter {
+public class ChatPresenter implements ChatContract.Presenter, View.OnClickListener {
     private MainRepository repository;
     private ChatContract.View chatView;
 
@@ -17,5 +19,13 @@ public class ChatPresenter implements ChatContract.Presenter {
                 .subscribe(detailRoom -> {
                     this.chatView.renderMessage(detailRoom);
                 });
+    }
+
+    @Override
+    public void onClick(View v) {
+        Room room = chatView.getRoom();
+        room.appendChatList(new Chat(chatView.getMessage()));
+        chatView.showSentMessage(room);
+        chatView.clearInputForm();
     }
 }

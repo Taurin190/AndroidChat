@@ -22,4 +22,8 @@ public class Room implements Serializable {
     public String getTitle() {
         return title;
     }
+
+    public void appendChatList(Chat chat) {
+        this.chatList.add(chat);
+    }
 }

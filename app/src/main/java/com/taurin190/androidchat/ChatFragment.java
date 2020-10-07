@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
@@ -58,6 +59,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         MainRepository repository = MainRepository.getInstance();
         this.presenter = new ChatPresenter(repository, this);
         this.presenter.loadRoomDetail(this.room);
+        binding.sendButton.setOnClickListener((View.OnClickListener) this.presenter);
         return view;
     }
 
@@ -74,9 +76,39 @@ public class ChatFragment extends Fragment implements ChatContract.View {
 
     @Override
     public void renderMessage(Room room) {
+        this.room = room;
         binding.centerMessage.setVisibility(View.GONE);
         binding.inputLayout.setVisibility(View.VISIBLE);
         binding.chatListview.setVisibility(View.VISIBLE);
         adapter.setChatList(room.getChatList());
+    }
+
+    @Override
+    public void showSentMessage(Room room) {
+        adapter.setChatList(room.getChatList());
+        binding.chatListview.scrollToPosition(room.getChatList().size() - 1);
+    }
+
+    @Override
+    public void notifySendFailure() {
+
+    }
+
+    @Override
+    public String getMessage() {
+        return binding.inputForm.getText().toString();
+    }
+
+    @Override
+    public void clearInputForm() {
+        binding.inputForm.setText("");
+        InputMethodManager imm = (InputMethodManager)this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(binding.getRoot().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        binding.inputForm.clearFocus();
+    }
+
+    @Override
+    public Room getRoom() {
+        return this.room;
     }
 }

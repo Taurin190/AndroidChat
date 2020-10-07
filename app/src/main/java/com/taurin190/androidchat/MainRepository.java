@@ -76,4 +76,11 @@ public class MainRepository {
             task.execute(0);
         });
     }
+
+    public Observable<Boolean> sendMessage(int roomId, String message) {
+        return Observable.create((sub) -> {
+            sub.onNext(false);
+            sub.onComplete();
+        });
+    }
 }
