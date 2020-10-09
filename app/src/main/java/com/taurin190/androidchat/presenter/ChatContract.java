@@ -1,4 +1,6 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.presenter;
+
+import com.taurin190.androidchat.domain.Room;
 
 public interface ChatContract {
     interface View {

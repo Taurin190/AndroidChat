@@ -1,6 +1,10 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.presenter;
 
 import android.view.View;
+
+import com.taurin190.androidchat.repository.MainRepository;
+import com.taurin190.androidchat.domain.Chat;
+import com.taurin190.androidchat.domain.Room;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 

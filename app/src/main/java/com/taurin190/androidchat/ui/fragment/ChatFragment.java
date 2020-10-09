@@ -1,4 +1,4 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,8 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import com.taurin190.androidchat.presenter.ChatContract;
+import com.taurin190.androidchat.presenter.ChatPresenter;
+import com.taurin190.androidchat.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
-import com.taurin190.androidchat.databinding.FragmentMainBinding;
+import com.taurin190.androidchat.domain.Chat;
+import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.ui.helper.ChatListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

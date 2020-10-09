@@ -1,10 +1,13 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.ui.helper;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
+import com.taurin190.androidchat.R;
+import com.taurin190.androidchat.domain.Chat;
 
 import java.util.List;
 

@@ -1,9 +1,12 @@
-package com.taurin190.androidchat
+package com.taurin190.androidchat.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import java.util.function.Predicate
+import com.taurin190.androidchat.R
+import com.taurin190.androidchat.domain.Room
+import com.taurin190.androidchat.ui.fragment.MainFragment
+import com.taurin190.androidchat.ui.fragment.MainFragmentListener
 
 class MainActivity : AppCompatActivity(), MainFragmentListener {
 

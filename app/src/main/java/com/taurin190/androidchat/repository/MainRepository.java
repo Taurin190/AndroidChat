@@ -1,8 +1,10 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.repository;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 
+
+import com.taurin190.androidchat.domain.Chat;
+import com.taurin190.androidchat.domain.Room;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,6 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.ui.fragment;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,7 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.taurin190.androidchat.presenter.MainContract;
+import com.taurin190.androidchat.presenter.MainPresenter;
+import com.taurin190.androidchat.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
+import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.ui.helper.RoomListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

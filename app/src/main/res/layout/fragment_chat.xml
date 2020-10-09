@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:background="#c9deff"
     android:orientation="vertical"
-    tools:context=".ChatFragment">
+    tools:context=".ui.fragment.ChatFragment">
 
     <LinearLayout
         android:id="@+id/centerMessage"

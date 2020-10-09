@@ -1,4 +1,4 @@
-package com.taurin190.androidchat;
+package com.taurin190.androidchat.domain;
 
 import java.io.Serializable;
 
