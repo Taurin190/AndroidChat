@@ -4,4 +4,6 @@ import com.taurin190.androidchat.domain.Room;
 
 public interface MainFragmentListener {
     public void moveRoomDetail(Room room);
+
+    public void showRoomCreationButton();
 }

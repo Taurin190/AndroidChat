@@ -3,6 +3,7 @@ package com.taurin190.androidchat.ui.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityMainBinding
 import com.taurin190.androidchat.domain.Room
@@ -32,5 +33,9 @@ class MainActivity : AppCompatActivity(), MainFragmentListener {
         val intent = Intent(this, ChatActivity::class.java)
         intent.putExtra(MainFragment.ROOM_DETAIL, room)
         startActivity(intent)
+    }
+
+    override fun showRoomCreationButton() {
+        binding.floatingActionButton.visibility =View.VISIBLE
     }
 }
