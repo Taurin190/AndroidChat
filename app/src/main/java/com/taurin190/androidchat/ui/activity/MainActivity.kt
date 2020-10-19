@@ -7,6 +7,7 @@ import android.view.View
 import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityMainBinding
 import com.taurin190.androidchat.domain.Room
+import com.taurin190.androidchat.presenter.RoomCreationContract
 import com.taurin190.androidchat.ui.fragment.MainFragment
 import com.taurin190.androidchat.ui.fragment.MainFragmentListener
 
@@ -36,6 +37,6 @@ class MainActivity : AppCompatActivity(), MainFragmentListener {
     }
 
     override fun showRoomCreationButton() {
-        binding.floatingActionButton.visibility =View.VISIBLE
+        (binding.floatingActionButton as View).visibility = View.VISIBLE
     }
 }

@@ -50,7 +50,12 @@ public class MainFragment extends Fragment implements MainContract.View {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         this.roomList = new ArrayList<Room>();
         adapter = new RoomListAdapter(getActivity().getBaseContext(), this.roomList);
-        adapter.setOnItemClickListener((View.OnClickListener) presenter);
+        adapter.setOnItemClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveRoomDetail(1);
+            }
+        });
         RecyclerView listView = (RecyclerView) binding.roomListview;
         this.context = getActivity().getBaseContext();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.context);

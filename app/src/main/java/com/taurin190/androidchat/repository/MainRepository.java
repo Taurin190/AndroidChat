@@ -85,4 +85,30 @@ public class MainRepository {
             sub.onComplete();
         });
     }
+
+    public Observable<Room> createRoom(final String title) {
+        return Observable.create((sub) -> {
+            AsyncTask task = new AsyncTask() {
+                @Override
+                protected Object doInBackground(Object[] objects) {
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Room room = new Room(
+                            10,
+                            "https://source.unsplash.com/user/erondu/1600x900",
+                            title,
+                            "",
+                            "昨日",
+                            new ArrayList<>());
+                    sub.onNext(room);
+                    sub.onComplete();
+                    return objects[0];
+                }
+            };
+            task.execute(0);
+        });
+    }
 }

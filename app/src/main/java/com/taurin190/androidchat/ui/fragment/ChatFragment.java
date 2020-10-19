@@ -64,7 +64,12 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         MainRepository repository = MainRepository.getInstance();
         this.presenter = new ChatPresenter(repository, this);
         this.presenter.loadRoomDetail(this.room);
-        binding.sendButton.setOnClickListener((View.OnClickListener) this.presenter);
+        binding.sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.sendMessage(room, binding.inputForm.getText().toString());
+            }
+        });
         return view;
     }
 
@@ -100,11 +105,6 @@ public class ChatFragment extends Fragment implements ChatContract.View {
     }
 
     @Override
-    public String getMessage() {
-        return binding.inputForm.getText().toString();
-    }
-
-    @Override
     public void clearInputForm() {
         binding.inputForm.setText("");
         InputMethodManager imm = (InputMethodManager)this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -112,8 +112,4 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         binding.inputForm.clearFocus();
     }
 
-    @Override
-    public Room getRoom() {
-        return this.room;
-    }
 }

@@ -7,11 +7,10 @@ public interface ChatContract {
         void renderMessage(Room room);
         void showSentMessage(Room room);
         void notifySendFailure();
-        String getMessage();
         void clearInputForm();
-        Room getRoom();
     }
     interface Presenter {
         void loadRoomDetail(Room room);
+        void sendMessage(Room room, String newMessage);
     }
 }

@@ -6,7 +6,7 @@ import com.taurin190.androidchat.repository.MainRepository;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
-public class MainPresenter implements MainContract.Presenter, View.OnClickListener {
+public class MainPresenter implements MainContract.Presenter {
     private MainRepository mainRepository;
     private MainContract.View mainView;
     public MainPresenter(MainRepository repository, MainContract.View view) {
@@ -21,10 +21,5 @@ public class MainPresenter implements MainContract.Presenter, View.OnClickListen
                 .subscribe(roomList -> {
                     mainView.renderRoomCollection(roomList);
                 });
-    }
-
-    @Override
-    public void onClick(View v) {
-        mainView.moveRoomDetail(1);
     }
 }
