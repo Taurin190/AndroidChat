@@ -24,7 +24,7 @@ class ChatPresenterTest {
                 "昨日",
                 arrayListOf()
         )
-        val presenter = ChatPresenter(repository, view)
+        val presenter = ChatPresenter(repository, view, TestSchedulerProvider())
         `when`(repository.getRoomDetail(100)).thenReturn(
                 Observable.create(
                         ObservableOnSubscribe {

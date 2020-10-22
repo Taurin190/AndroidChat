@@ -17,6 +17,7 @@ import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.domain.Chat;
 import com.taurin190.androidchat.domain.Room;
 import com.taurin190.androidchat.ui.helper.ChatListAdapter;
+import com.taurin190.androidchat.util.AppSchedulerProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +63,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         View view = binding.getRoot();
 
         MainRepository repository = MainRepository.getInstance();
-        this.presenter = new ChatPresenter(repository, this);
+        this.presenter = new ChatPresenter(repository, this, new AppSchedulerProvider());
         this.presenter.loadRoomDetail(this.room);
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
