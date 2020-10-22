@@ -4,6 +4,7 @@ import com.taurin190.androidchat.domain.Room
 import com.taurin190.androidchat.presenter.ChatContract
 import com.taurin190.androidchat.presenter.ChatPresenter
 import com.taurin190.androidchat.repository.MainRepository
+import com.taurin190.androidchat.util.TestSchedulerProvider
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.ObservableOnSubscribe

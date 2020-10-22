@@ -1,4 +1,4 @@
-package com.taurin190.androidchat
+package com.taurin190.androidchat.util
 
 import com.taurin190.androidchat.util.SchedulerProvider
 import io.reactivex.Scheduler
