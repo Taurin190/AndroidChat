@@ -15,6 +15,7 @@ import com.taurin190.androidchat.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
 import com.taurin190.androidchat.domain.Room;
 import com.taurin190.androidchat.ui.helper.RoomListAdapter;
+import com.taurin190.androidchat.util.AppSchedulerProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class MainFragment extends Fragment implements MainContract.View {
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
         MainRepository repository = MainRepository.getInstance();
-        presenter = new MainPresenter(repository, this);
+        presenter = new MainPresenter(repository, this, new AppSchedulerProvider());
         presenter.loadRoomCollection();
 
         return view;

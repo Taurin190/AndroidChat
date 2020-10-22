@@ -22,7 +22,7 @@ public class ChatPresenter implements ChatContract.Presenter {
     @Override
     public void loadRoomDetail(Room room) {
         this.repository.getRoomDetail(room.getRoomId())
-                .observeOn(this.schedulerProvider.io())
+                .observeOn(this.schedulerProvider.ui())
                 .subscribe(detailRoom -> {
                     this.chatView.renderMessage(detailRoom);
                 });
