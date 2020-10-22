@@ -37,4 +37,17 @@ class ChatPresenterTest {
         verify(repository).getRoomDetail(100)
         verify(view).renderMessage(room)
     }
+
+    @Test
+    fun testSendMessage() {
+        val repository = Mockito.mock(MainRepository::class.java)
+        val view = Mockito.mock(ChatContract.View::class.java)
+        val room = Mockito.mock(Room::class.java)
+        val presenter = ChatPresenter(repository, view, TestSchedulerProvider())
+
+        presenter.sendMessage(room, "Test")
+        verify(view).showSentMessage(room)
+        verify(view).clearInputForm()
+    }
+
 }
