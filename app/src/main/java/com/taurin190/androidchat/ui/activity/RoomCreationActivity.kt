@@ -11,6 +11,7 @@ import com.taurin190.androidchat.presenter.RoomCreationContract
 import com.taurin190.androidchat.presenter.RoomCreationPresenter
 import com.taurin190.androidchat.repository.MainRepository
 import com.taurin190.androidchat.ui.fragment.MainFragment
+import com.taurin190.androidchat.util.AppSchedulerProvider
 
 class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {
     private lateinit var binding: ActivityRoomCreationBinding
@@ -24,7 +25,7 @@ class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {
         actionBar!!.setDisplayHomeAsUpEnabled(true)
         actionBar.title = "新規ルーム作成"
         val repository = MainRepository.getInstance()
-        val presenter = RoomCreationPresenter(repository, this);
+        val presenter = RoomCreationPresenter(repository, this, AppSchedulerProvider());
 
         binding.button.setOnClickListener{
             presenter.createRoom(binding.textView.text.toString())
