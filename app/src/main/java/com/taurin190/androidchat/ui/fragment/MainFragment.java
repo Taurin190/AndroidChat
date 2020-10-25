@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import com.taurin190.androidchat.presenter.MainContract;
 import com.taurin190.androidchat.presenter.MainPresenter;
-import com.taurin190.androidchat.repository.MainRepository;
+import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
 import com.taurin190.androidchat.domain.Room;
 import com.taurin190.androidchat.ui.helper.RoomListAdapter;

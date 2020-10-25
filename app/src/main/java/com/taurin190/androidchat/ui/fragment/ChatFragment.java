@@ -12,7 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.taurin190.androidchat.presenter.ChatContract;
 import com.taurin190.androidchat.presenter.ChatPresenter;
-import com.taurin190.androidchat.repository.MainRepository;
+import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.domain.Chat;
 import com.taurin190.androidchat.domain.Room;

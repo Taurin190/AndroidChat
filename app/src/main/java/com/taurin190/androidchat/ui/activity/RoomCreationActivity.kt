@@ -4,12 +4,11 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityRoomCreationBinding
 import com.taurin190.androidchat.domain.Room
 import com.taurin190.androidchat.presenter.RoomCreationContract
 import com.taurin190.androidchat.presenter.RoomCreationPresenter
-import com.taurin190.androidchat.repository.MainRepository
+import com.taurin190.androidchat.data.repository.MainRepository
 import com.taurin190.androidchat.ui.fragment.MainFragment
 import com.taurin190.androidchat.util.AppSchedulerProvider
 

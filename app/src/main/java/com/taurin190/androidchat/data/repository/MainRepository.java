@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.repository;
+package com.taurin190.androidchat.data.repository;
 
 import android.os.AsyncTask;
 

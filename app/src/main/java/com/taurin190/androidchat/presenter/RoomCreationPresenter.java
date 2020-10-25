@@ -1,9 +1,7 @@
 package com.taurin190.androidchat.presenter;
 
-import com.taurin190.androidchat.repository.MainRepository;
+import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.util.SchedulerProvider;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class RoomCreationPresenter implements RoomCreationContract.Presenter {
     private MainRepository repository;
