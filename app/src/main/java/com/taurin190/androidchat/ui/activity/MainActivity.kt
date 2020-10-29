@@ -2,8 +2,9 @@ package com.taurin190.androidchat.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityMainBinding
 import com.taurin190.androidchat.domain.Room

@@ -1,8 +1,7 @@
 package com.taurin190.androidchat.ui.helper;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +10,9 @@ import com.taurin190.androidchat.R;
 import com.taurin190.androidchat.domain.Room;
 
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
 
@@ -35,14 +37,13 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
         this.listener = listener;
     }
 
-    @NonNull
     @Override
-    public RoomViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public RoomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         return new RoomViewHolder(inflater.inflate(R.layout.room_item, viewGroup, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RoomViewHolder roomViewHolder, int position) {
+    public void onBindViewHolder(RoomViewHolder roomViewHolder, int position) {
         if (list.size() == 0) {
             return;
         }

@@ -2,7 +2,6 @@ package com.taurin190.androidchat.data.repository;
 
 import android.os.AsyncTask;
 
-
 import com.taurin190.androidchat.domain.Chat;
 import com.taurin190.androidchat.domain.Room;
 

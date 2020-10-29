@@ -2,23 +2,24 @@ package com.taurin190.androidchat.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.taurin190.androidchat.presenter.MainContract;
 import com.taurin190.androidchat.presenter.MainPresenter;
-import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
 import com.taurin190.androidchat.domain.Room;
 import com.taurin190.androidchat.ui.helper.RoomListAdapter;
 import com.taurin190.androidchat.util.AppSchedulerProvider;
+import com.taurin190.androidchat.data.repository.MainRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainFragment extends Fragment implements MainContract.View {
     public static final String ROOM_DETAIL = "room_detail";
