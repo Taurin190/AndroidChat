@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.taurin190.androidchat.data.api.FirebaseRoomApi;
+import com.taurin190.androidchat.data.api.RoomApi;
 import com.taurin190.androidchat.presenter.MainContract;
 import com.taurin190.androidchat.presenter.MainPresenter;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
@@ -41,7 +43,9 @@ public class MainFragment extends Fragment implements MainContract.View {
         super.onCreateView(inflater, container, savedInstanceState);
         binding = FragmentMainBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        MainRepository repository = MainRepository.getInstance();
+
+        RoomApi api = new FirebaseRoomApi();
+        MainRepository repository = new MainRepository(api);
         presenter = new MainPresenter(repository, this, new AppSchedulerProvider());
         presenter.loadRoomCollection();
 

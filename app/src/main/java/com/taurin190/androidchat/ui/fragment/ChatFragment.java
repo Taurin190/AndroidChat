@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import com.taurin190.androidchat.data.api.FirebaseRoomApi;
+import com.taurin190.androidchat.data.api.RoomApi;
 import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.domain.Chat;
@@ -63,7 +65,8 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         binding = FragmentChatBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        MainRepository repository = MainRepository.getInstance();
+        RoomApi api = new FirebaseRoomApi();
+        MainRepository repository = new MainRepository(api);
         this.presenter = new ChatPresenter(repository, this, new AppSchedulerProvider());
         this.presenter.loadRoomDetail(this.room);
         binding.sendButton.setOnClickListener(new View.OnClickListener() {

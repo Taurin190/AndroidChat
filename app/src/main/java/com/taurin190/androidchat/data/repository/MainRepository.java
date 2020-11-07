@@ -2,6 +2,7 @@ package com.taurin190.androidchat.data.repository;
 
 import android.os.AsyncTask;
 
+import com.taurin190.androidchat.data.api.RoomApi;
 import com.taurin190.androidchat.domain.Chat;
 import com.taurin190.androidchat.domain.Room;
 
@@ -12,15 +13,12 @@ import io.reactivex.Observable;
 
 public class MainRepository {
     static MainRepository instance;
+    private RoomApi api;
 
-    private MainRepository() {}
-
-    public static MainRepository getInstance() {
-        if (instance == null) {
-            instance = new MainRepository();
-        }
-        return instance;
+    public MainRepository(RoomApi api) {
+        this.api = api;
     }
+
     public Observable<List<Room>> getRoomList() {
         return Observable.create((sub) -> {
             AsyncTask task = new AsyncTask() {

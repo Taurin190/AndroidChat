@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.taurin190.androidchat.data.api.FirebaseRoomApi
+import com.taurin190.androidchat.data.api.RoomApi
 import com.taurin190.androidchat.databinding.ActivityRoomCreationBinding
 import com.taurin190.androidchat.domain.Room
 import com.taurin190.androidchat.presenter.RoomCreationContract
@@ -23,7 +25,8 @@ class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {
         val actionBar = supportActionBar
         actionBar!!.setDisplayHomeAsUpEnabled(true)
         actionBar.title = "新規ルーム作成"
-        val repository = MainRepository.getInstance()
+        val api: RoomApi = FirebaseRoomApi()
+        val repository = MainRepository(api)
         val presenter = RoomCreationPresenter(repository, this, AppSchedulerProvider());
 
         binding.button.setOnClickListener{
