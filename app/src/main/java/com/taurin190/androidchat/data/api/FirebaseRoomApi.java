@@ -11,7 +11,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.taurin190.androidchat.domain.Room;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,17 +77,19 @@ public class FirebaseRoomApi implements RoomApi {
         return Observable.create((sub) -> {
             DatabaseReference ref = database.getReference();
             String newPostKey = ref.child("rooms").push().getKey();
-            ref.child("rooms").child(newPostKey).child("title").setValue(title)
+            Date now = new Date();
+            SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Room room = new Room(
+                    newPostKey,
+                    "",
+                    title,
+                    "",
+                    df.format(now),
+                    new ArrayList<>());
+            ref.child("rooms").child(newPostKey).setValue(room)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Room room = new Room(
-                                    "10",
-                                    "https://source.unsplash.com/user/erondu/1600x900",
-                                    title,
-                                    "",
-                                    "昨日",
-                                    new ArrayList<>());
                             sub.onNext(room);
                         }
                     });
