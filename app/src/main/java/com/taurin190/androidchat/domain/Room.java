@@ -11,7 +11,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Room implements Serializable {
-    private int roomId;
+    private String roomId;
     private String imageUrl;
     private String title;
     private String lastMessage;

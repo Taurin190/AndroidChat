@@ -59,7 +59,7 @@ public class MainFragment extends Fragment implements MainContract.View {
         adapter.setOnItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveRoomDetail(1);
+                moveRoomDetail("1");
             }
         });
         RecyclerView listView = (RecyclerView) binding.roomListview;
@@ -102,7 +102,7 @@ public class MainFragment extends Fragment implements MainContract.View {
     }
 
     @Override
-    public void moveRoomDetail(int roomId) {
+    public void moveRoomDetail(String roomId) {
         Room room = roomList.stream().filter(r ->
                     roomId == r.getRoomId()
                 ).findFirst().orElse(null);

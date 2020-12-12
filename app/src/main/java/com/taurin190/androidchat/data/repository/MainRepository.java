@@ -23,7 +23,7 @@ public class MainRepository {
         return api.getRoomList();
     }
 
-    public Observable<Room> getRoomDetail(int roomId) {
+    public Observable<Room> getRoomDetail(String roomId) {
         return Observable.create((sub) -> {
             AsyncTask task = new AsyncTask() {
                 @Override

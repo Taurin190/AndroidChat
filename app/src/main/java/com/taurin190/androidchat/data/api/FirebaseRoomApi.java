@@ -12,6 +12,7 @@ import com.taurin190.androidchat.domain.Room;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -29,12 +30,21 @@ public class FirebaseRoomApi implements RoomApi {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    ArrayList roomList = snapshot.getValue(ArrayList.class);
-                    if (roomList == null) {
-                        roomList = new ArrayList();
+                    HashMap<String, Object> roomHash = (HashMap<String, Object>) snapshot.getValue();
+                    ArrayList list = new ArrayList();
+                    Room room;
+                    for (String key: roomHash.keySet()) {
+                        room = new Room(
+                                key,
+                                "",
+                                (String)((HashMap)roomHash.get(key)).get("title"),
+                                "",
+                                "",
+                                new ArrayList());
+                        list.add(room);
                     }
-                    Log.d("DEBUG", "Value is: " + roomList);
-                    sub.onNext(roomList);
+                    Log.d("DEBUG", "Value is: " + list);
+                    sub.onNext(list);
                     sub.onComplete();
                 }
 
@@ -64,12 +74,13 @@ public class FirebaseRoomApi implements RoomApi {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         return Observable.create((sub) -> {
             DatabaseReference ref = database.getReference();
-            ref.child("rooms").child("1").child("title").setValue(title)
+            String newPostKey = ref.child("rooms").push().getKey();
+            ref.child("rooms").child(newPostKey).child("title").setValue(title)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Room room = new Room(
-                                    10,
+                                    "10",
                                     "https://source.unsplash.com/user/erondu/1600x900",
                                     title,
                                     "",

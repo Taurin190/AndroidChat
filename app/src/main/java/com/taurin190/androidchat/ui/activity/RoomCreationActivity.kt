@@ -30,7 +30,7 @@ class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {
         val presenter = RoomCreationPresenter(repository, this, AppSchedulerProvider());
 
         binding.button.setOnClickListener{
-            presenter.createRoom(binding.textView.text.toString())
+            presenter.createRoom(binding.editTextTextPersonName.text.toString())
         }
     }
 

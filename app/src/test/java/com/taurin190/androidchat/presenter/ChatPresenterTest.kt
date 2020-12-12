@@ -16,7 +16,7 @@ class ChatPresenterTest {
     fun testLoadRoomDetail() {
         val repository = Mockito.mock(MainRepository::class.java)
         val view = Mockito.mock(ChatContract.View::class.java)
-        val room = Room(100,
+        val room = Room("100",
                 "https://123.jpg",
                 "テストルーム",
                 "最後のメッセージ",
@@ -24,7 +24,7 @@ class ChatPresenterTest {
                 arrayListOf()
         )
         val presenter = ChatPresenter(repository, view, TestSchedulerProvider())
-        `when`(repository.getRoomDetail(100)).thenReturn(
+        `when`(repository.getRoomDetail("100")).thenReturn(
                 Observable.create(
                         ObservableOnSubscribe {
                             sub: ObservableEmitter<Room> -> sub.onNext(room)
@@ -33,7 +33,7 @@ class ChatPresenterTest {
         )
 
         presenter.loadRoomDetail(room)
-        verify(repository).getRoomDetail(100)
+        verify(repository).getRoomDetail("100")
         verify(view).renderMessage(room)
     }
 
