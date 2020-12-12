@@ -45,7 +45,6 @@ public class FirebaseRoomApi implements RoomApi {
                                 new ArrayList());
                         list.add(room);
                     }
-                    Log.d("DEBUG", "Value is: " + list);
                     sub.onNext(list);
                     sub.onComplete();
                 }
