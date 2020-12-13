@@ -9,7 +9,7 @@ import io.reactivex.Observable;
 public interface RoomApi {
     Observable<List<Room>> getRoomList();
 
-    Observable<Room> getRoomDetail(int roomId);
+    Observable<Room> getRoomDetail(String roomId);
 
     Observable<Boolean> sendMessage(int roomId, String message);
 

@@ -61,8 +61,36 @@ public class FirebaseRoomApi implements RoomApi {
     }
 
     @Override
-    public Observable<Room> getRoomDetail(int roomId) {
-        return null;
+    public Observable<Room> getRoomDetail(String roomId) {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        return Observable.create((sub) -> {
+            DatabaseReference ref = database.getReference("rooms");
+            ref.child(roomId).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Room room;
+                    HashMap<String, Object> roomHash = (HashMap<String, Object>) snapshot.getValue();
+                    ArrayList chatLst = (ArrayList) roomHash.get("chatList");
+                    if (chatLst == null) {
+                        chatLst = new ArrayList();
+                    }
+                    room = new Room(
+                            (String) roomHash.get("roomId"),
+                            (String) roomHash.get("imageUrl"),
+                            (String) roomHash.get("title"),
+                            (String) roomHash.get("lastMessage"),
+                            (String) roomHash.get("lastUpdate"),
+                            chatLst);
+                    sub.onNext(room);
+                    sub.onComplete();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        });
     }
 
     @Override
