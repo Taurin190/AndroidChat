@@ -68,7 +68,6 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         RoomApi api = new FirebaseRoomApi();
         MainRepository repository = new MainRepository(api);
         this.presenter = new ChatPresenter(repository, this, new AppSchedulerProvider());
-        this.presenter.loadRoomDetail(this.room);
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,6 +75,12 @@ public class ChatFragment extends Fragment implements ChatContract.View {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        this.presenter.loadRoomDetail(this.room);
     }
 
     @Override
