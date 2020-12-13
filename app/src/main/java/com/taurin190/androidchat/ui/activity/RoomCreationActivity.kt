@@ -26,7 +26,7 @@ class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {
         actionBar!!.setDisplayHomeAsUpEnabled(true)
         actionBar.title = "新規ルーム作成"
         val api: RoomApi = FirebaseRoomApi()
-        val repository = MainRepository(api)
+        val repository = MainRepository(api, AppSchedulerProvider())
         val presenter = RoomCreationPresenter(repository, this, AppSchedulerProvider());
 
         binding.button.setOnClickListener{

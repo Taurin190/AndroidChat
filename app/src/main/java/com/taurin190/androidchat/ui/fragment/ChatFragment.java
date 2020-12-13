@@ -66,7 +66,7 @@ public class ChatFragment extends Fragment implements ChatContract.View {
         View view = binding.getRoot();
 
         RoomApi api = new FirebaseRoomApi();
-        MainRepository repository = new MainRepository(api);
+        MainRepository repository = new MainRepository(api, new AppSchedulerProvider());
         this.presenter = new ChatPresenter(repository, this, new AppSchedulerProvider());
         binding.sendButton.setOnClickListener(new View.OnClickListener() {
             @Override

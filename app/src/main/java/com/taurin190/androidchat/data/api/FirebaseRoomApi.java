@@ -26,7 +26,7 @@ import lombok.SneakyThrows;
 public class FirebaseRoomApi implements RoomApi {
 
     @Override
-    public Observable<List<Room>> getRoomList() {
+    public Observable<HashMap<String, Object>> getRoomList() {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         return Observable.create((sub) -> {
             DatabaseReference ref = database.getReference("rooms");
@@ -35,19 +35,7 @@ public class FirebaseRoomApi implements RoomApi {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     HashMap<String, Object> roomHash = (HashMap<String, Object>) snapshot.getValue();
-                    ArrayList list = new ArrayList();
-                    Room room;
-                    for (String key: roomHash.keySet()) {
-                        room = new Room(
-                                key,
-                                "",
-                                (String)((HashMap)roomHash.get(key)).get("title"),
-                                "",
-                                "",
-                                new ArrayList());
-                        list.add(room);
-                    }
-                    sub.onNext(list);
+                    sub.onNext(roomHash);
                     sub.onComplete();
                 }
 
@@ -63,7 +51,7 @@ public class FirebaseRoomApi implements RoomApi {
     }
 
     @Override
-    public Observable<Room> getRoomDetail(String roomId) {
+    public Observable<HashMap<String, Object>> getRoomDetail(String roomId) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         return Observable.create((sub) -> {
             DatabaseReference ref = database.getReference("rooms");
@@ -72,25 +60,7 @@ public class FirebaseRoomApi implements RoomApi {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Room room;
                     HashMap<String, Object> roomHash = (HashMap<String, Object>) snapshot.getValue();
-                    ArrayList originalList = (ArrayList) roomHash.get("chatList");
-                    ArrayList chatList = new ArrayList();
-                    if (originalList != null) {
-                        Chat chat;
-                        HashMap<String, String> message;
-                        for (int i = 0; i < originalList.size(); i++) {
-                            message = (HashMap<String, String>) originalList.get(i);
-                            Log.d("DEBUG", "Chat Message is: " + message.get("message"));
-                            chatList.add(new Chat(message.get("message")));
-                        }
-                    }
-                    room = new Room(
-                            (String) roomHash.get("roomId"),
-                            (String) roomHash.get("imageUrl"),
-                            (String) roomHash.get("title"),
-                            (String) roomHash.get("lastMessage"),
-                            (String) roomHash.get("lastUpdate"),
-                            chatList);
-                    sub.onNext(room);
+                    sub.onNext(roomHash);
                     sub.onComplete();
                 }
 

@@ -48,7 +48,7 @@ public class MainFragment extends Fragment implements MainContract.View {
         View view = binding.getRoot();
 
         RoomApi api = new FirebaseRoomApi();
-        MainRepository repository = new MainRepository(api);
+        MainRepository repository = new MainRepository(api, new AppSchedulerProvider());
         presenter = new MainPresenter(repository, this, new AppSchedulerProvider());
 
         return view;
