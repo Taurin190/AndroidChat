@@ -50,6 +50,7 @@ public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {
         roomViewHolder.icon.setImageResource(R.mipmap.ic_launcher);
         roomViewHolder.title.setText(list.get(position).getTitle());
         roomViewHolder.content.setText(list.get(position).getLastMessage());
+        roomViewHolder.roomId.setText(list.get(position).getRoomId());
         roomViewHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

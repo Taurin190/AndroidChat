@@ -2,10 +2,13 @@ package com.taurin190.androidchat.ui.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.taurin190.androidchat.R;
 import com.taurin190.androidchat.data.api.FirebaseRoomApi;
 import com.taurin190.androidchat.data.api.RoomApi;
 import com.taurin190.androidchat.presenter.MainContract;
@@ -64,7 +67,9 @@ public class MainFragment extends Fragment implements MainContract.View {
         adapter.setOnItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moveRoomDetail("1");
+                TextView roomId = (TextView) v.findViewById(R.id.roomId);
+                Log.d("DEBUG", "Room ID is: " + roomId.getText().toString());
+                moveRoomDetail(roomId.getText().toString());
             }
         });
         RecyclerView listView = (RecyclerView) binding.roomListview;

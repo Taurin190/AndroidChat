@@ -13,6 +13,7 @@ public class RoomViewHolder extends RecyclerView.ViewHolder {
     public ImageView icon;
     public TextView title;
     public TextView content;
+    public TextView roomId;
     public LinearLayout card;
     public RoomViewHolder(View itemView) {
         super(itemView);
@@ -20,5 +21,6 @@ public class RoomViewHolder extends RecyclerView.ViewHolder {
         title = (TextView) itemView.findViewById(R.id.title);
         content = (TextView) itemView.findViewById(R.id.content);
         card = (LinearLayout) itemView.findViewById(R.id.card);
+        roomId = (TextView) itemView.findViewById(R.id.roomId);
     }
 }
