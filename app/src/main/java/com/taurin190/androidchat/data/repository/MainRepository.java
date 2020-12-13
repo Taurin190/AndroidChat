@@ -27,7 +27,7 @@ public class MainRepository {
     public Observable<List<Room>> getRoomList() {
         return Observable.create((sub) -> {
             api.getRoomList()
-                    .observeOn(schedulerProvider.io())
+                    .subscribeOn(schedulerProvider.io())
                     .subscribe(subject -> {
                         ArrayList list = new ArrayList();
                         Room room;
@@ -50,7 +50,7 @@ public class MainRepository {
     public Observable<Room> getRoomDetail(String roomId) {
         return Observable.create((sub) -> {
             this.api.getRoomDetail(roomId)
-                    .observeOn(schedulerProvider.io())
+                    .subscribeOn(schedulerProvider.io())
                     .subscribe(subject -> {
                         ArrayList originalList = (ArrayList) subject.get("chatList");
                         ArrayList chatList = new ArrayList();
