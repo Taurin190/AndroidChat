@@ -27,11 +27,8 @@ public class MainRepository {
         return this.api.getRoomDetail(roomId);
     }
 
-    public Observable<Boolean> sendMessage(int roomId, String message) {
-        return Observable.create((sub) -> {
-            sub.onNext(false);
-            sub.onComplete();
-        });
+    public Observable<Room> sendMessage(Room room, String message) {
+        return this.api.sendMessage(room, message);
     }
 
     public Observable<Room> createRoom(final String title) {

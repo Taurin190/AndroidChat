@@ -26,8 +26,11 @@ public class ChatPresenter implements ChatContract.Presenter {
 
     @Override
     public void sendMessage(Room room, String message) {
-        room.appendChatList(new Chat(message));
-        chatView.showSentMessage(room);
-        chatView.clearInputForm();
+        this.repository.sendMessage(room, message)
+                .observeOn(this.schedulerProvider.ui())
+                .subscribe(newRoom -> {
+                    chatView.showSentMessage(newRoom);
+                    chatView.clearInputForm();
+                });
     }
 }

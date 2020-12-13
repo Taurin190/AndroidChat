@@ -2,12 +2,14 @@ package com.taurin190.androidchat.data.api;
 
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.taurin190.androidchat.domain.Chat;
 import com.taurin190.androidchat.domain.Room;
 
 import java.io.IOException;
@@ -70,9 +72,16 @@ public class FirebaseRoomApi implements RoomApi {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Room room;
                     HashMap<String, Object> roomHash = (HashMap<String, Object>) snapshot.getValue();
-                    ArrayList chatLst = (ArrayList) roomHash.get("chatList");
-                    if (chatLst == null) {
-                        chatLst = new ArrayList();
+                    ArrayList originalList = (ArrayList) roomHash.get("chatList");
+                    ArrayList chatList = new ArrayList();
+                    if (originalList != null) {
+                        Chat chat;
+                        HashMap<String, String> message;
+                        for (int i = 0; i < originalList.size(); i++) {
+                            message = (HashMap<String, String>) originalList.get(i);
+                            Log.d("DEBUG", "Chat Message is: " + message.get("message"));
+                            chatList.add(new Chat(message.get("message")));
+                        }
                     }
                     room = new Room(
                             (String) roomHash.get("roomId"),
@@ -80,7 +89,7 @@ public class FirebaseRoomApi implements RoomApi {
                             (String) roomHash.get("title"),
                             (String) roomHash.get("lastMessage"),
                             (String) roomHash.get("lastUpdate"),
-                            chatLst);
+                            chatList);
                     sub.onNext(room);
                     sub.onComplete();
                 }
@@ -94,8 +103,28 @@ public class FirebaseRoomApi implements RoomApi {
     }
 
     @Override
-    public Observable<Boolean> sendMessage(int roomId, String message) {
-        return null;
+    public Observable<Room> sendMessage(Room room, String message) {
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Room newRoom = room;
+        newRoom.appendChatList(new Chat(message));
+        return Observable.create((sub) -> {
+            DatabaseReference ref = database.getReference();
+            ref.child("rooms").child(room.getRoomId()).setValue(newRoom)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            sub.onNext(newRoom);
+                            sub.onComplete();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            sub.onNext(room);
+                            sub.onComplete();
+                        }
+                    });
+        });
     }
 
     @Override

@@ -11,7 +11,7 @@ public interface RoomApi {
 
     Observable<Room> getRoomDetail(String roomId);
 
-    Observable<Boolean> sendMessage(int roomId, String message);
+    Observable<Room> sendMessage(Room room, String message);
 
     Observable<Room> createRoom(final String title);
 }
