@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.login
+package com.taurin190.androidchat.presentation.login
 
 /**
  * User details post authentication that is exposed to the UI

@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.room
+package com.taurin190.androidchat.presentation.room
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +8,9 @@ import com.taurin190.androidchat.data.api.FirebaseRoomApi
 import com.taurin190.androidchat.data.api.RoomApi
 import com.taurin190.androidchat.databinding.ActivityRoomCreationBinding
 import com.taurin190.androidchat.data.model.Room
-import com.taurin190.androidchat.presenter.RoomCreationContract
-import com.taurin190.androidchat.presenter.RoomCreationPresenter
 import com.taurin190.androidchat.data.repository.MainRepository
-import com.taurin190.androidchat.ui.chat.ChatActivity
-import com.taurin190.androidchat.ui.main.MainFragment
+import com.taurin190.androidchat.presentation.chat.ChatActivity
+import com.taurin190.androidchat.presentation.main.MainFragment
 import com.taurin190.androidchat.util.AppSchedulerProvider
 
 class RoomCreationActivity : AppCompatActivity(), RoomCreationContract.View {

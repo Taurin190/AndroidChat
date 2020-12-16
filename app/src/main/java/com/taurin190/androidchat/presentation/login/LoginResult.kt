@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.login
+package com.taurin190.androidchat.presentation.login
 
 /**
  * Authentication result : success (user details) or error message.

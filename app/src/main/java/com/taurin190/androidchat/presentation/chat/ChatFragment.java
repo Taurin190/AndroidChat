@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.chat;
+package com.taurin190.androidchat.presentation.chat;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,9 +13,7 @@ import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.databinding.FragmentChatBinding;
 import com.taurin190.androidchat.data.model.Chat;
 import com.taurin190.androidchat.data.model.Room;
-import com.taurin190.androidchat.presenter.ChatContract;
-import com.taurin190.androidchat.presenter.ChatPresenter;
-import com.taurin190.androidchat.ui.chat.helper.ChatListAdapter;
+import com.taurin190.androidchat.presentation.chat.helper.ChatListAdapter;
 import com.taurin190.androidchat.util.AppSchedulerProvider;
 
 import java.util.ArrayList;

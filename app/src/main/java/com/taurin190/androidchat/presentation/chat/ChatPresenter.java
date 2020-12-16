@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.presenter;
+package com.taurin190.androidchat.presentation.chat;
 
 import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.data.model.Room;

@@ -2,6 +2,8 @@ package com.taurin190.androidchat.presenter
 
 import com.taurin190.androidchat.data.model.Room
 import com.taurin190.androidchat.data.repository.MainRepository
+import com.taurin190.androidchat.presentation.room.RoomCreationContract
+import com.taurin190.androidchat.presentation.room.RoomCreationPresenter
 import com.taurin190.androidchat.util.TestSchedulerProvider
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter

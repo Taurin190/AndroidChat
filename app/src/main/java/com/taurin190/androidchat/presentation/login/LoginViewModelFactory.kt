@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.presenter
+package com.taurin190.androidchat.presentation.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

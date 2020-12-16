@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.chat.helper;
+package com.taurin190.androidchat.presentation.chat.helper;
 
 import android.view.View;
 import android.widget.TextView;

@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.login
+package com.taurin190.androidchat.presentation.login
 
 import android.app.Activity
 import androidx.lifecycle.Observer
@@ -16,8 +16,6 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.taurin190.androidchat.R
-import com.taurin190.androidchat.presenter.LoginViewModel
-import com.taurin190.androidchat.presenter.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.main;
+package com.taurin190.androidchat.presentation.main;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,11 +11,9 @@ import android.widget.TextView;
 import com.taurin190.androidchat.R;
 import com.taurin190.androidchat.data.api.FirebaseRoomApi;
 import com.taurin190.androidchat.data.api.RoomApi;
-import com.taurin190.androidchat.presenter.MainContract;
-import com.taurin190.androidchat.presenter.MainPresenter;
 import com.taurin190.androidchat.databinding.FragmentMainBinding;
 import com.taurin190.androidchat.data.model.Room;
-import com.taurin190.androidchat.ui.room.helper.RoomListAdapter;
+import com.taurin190.androidchat.presentation.room.helper.RoomListAdapter;
 import com.taurin190.androidchat.util.AppSchedulerProvider;
 import com.taurin190.androidchat.data.repository.MainRepository;
 

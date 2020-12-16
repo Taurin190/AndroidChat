@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.main
+package com.taurin190.androidchat.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityMainBinding
 import com.taurin190.androidchat.data.model.Room
-import com.taurin190.androidchat.ui.chat.ChatActivity
-import com.taurin190.androidchat.ui.room.RoomCreationActivity
+import com.taurin190.androidchat.presentation.chat.ChatActivity
+import com.taurin190.androidchat.presentation.room.RoomCreationActivity
 
 class MainActivity : AppCompatActivity(), MainFragmentListener {
     private lateinit var binding:ActivityMainBinding

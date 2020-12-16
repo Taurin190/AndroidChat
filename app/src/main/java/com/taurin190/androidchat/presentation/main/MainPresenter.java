@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.presenter;
+package com.taurin190.androidchat.presentation.main;
 
 import com.taurin190.androidchat.data.repository.MainRepository;
 import com.taurin190.androidchat.util.SchedulerProvider;
