@@ -1,6 +1,6 @@
 package com.taurin190.androidchat.presenter;
 
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Room;
 
 import java.util.List;
 

@@ -1,7 +1,5 @@
 package com.taurin190.androidchat.data.api;
 
-import android.util.Log;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -9,15 +7,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.taurin190.androidchat.domain.Chat;
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Chat;
+import com.taurin190.androidchat.data.model.Room;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import io.reactivex.Observable;

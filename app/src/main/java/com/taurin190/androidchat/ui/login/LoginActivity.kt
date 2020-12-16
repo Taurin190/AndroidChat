@@ -16,6 +16,8 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.taurin190.androidchat.R
+import com.taurin190.androidchat.presenter.LoginViewModel
+import com.taurin190.androidchat.presenter.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
 

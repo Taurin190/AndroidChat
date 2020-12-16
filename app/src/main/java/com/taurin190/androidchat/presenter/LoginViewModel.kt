@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.login
+package com.taurin190.androidchat.presenter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +8,9 @@ import com.taurin190.androidchat.data.repository.LoginRepository
 import com.taurin190.androidchat.data.AuthenticationResult
 
 import com.taurin190.androidchat.R
+import com.taurin190.androidchat.ui.login.LoggedInUserView
+import com.taurin190.androidchat.ui.login.LoginFormState
+import com.taurin190.androidchat.ui.login.LoginResult
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 

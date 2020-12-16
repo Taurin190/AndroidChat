@@ -1,9 +1,8 @@
 package com.taurin190.androidchat.data.api;
 
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Room;
 
 import java.util.HashMap;
-import java.util.List;
 
 import io.reactivex.Observable;
 

@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.helper;
+package com.taurin190.androidchat.ui.room.helper;
 
 import android.content.Context;
 
@@ -7,11 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.taurin190.androidchat.R;
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Room;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RoomListAdapter extends RecyclerView.Adapter<RoomViewHolder> {

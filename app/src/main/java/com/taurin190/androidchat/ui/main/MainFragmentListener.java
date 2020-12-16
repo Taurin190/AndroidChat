@@ -1,6 +1,6 @@
-package com.taurin190.androidchat.ui.fragment;
+package com.taurin190.androidchat.ui.main;
 
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Room;
 
 public interface MainFragmentListener {
     public void moveRoomDetail(Room room);

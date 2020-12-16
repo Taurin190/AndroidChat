@@ -1,8 +1,7 @@
 package com.taurin190.androidchat.presenter;
 
 import com.taurin190.androidchat.data.repository.MainRepository;
-import com.taurin190.androidchat.domain.Chat;
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Room;
 import com.taurin190.androidchat.util.SchedulerProvider;
 
 public class ChatPresenter implements ChatContract.Presenter {

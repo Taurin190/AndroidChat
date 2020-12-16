@@ -1,12 +1,11 @@
-package com.taurin190.androidchat.ui.activity
+package com.taurin190.androidchat.ui.chat
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.taurin190.androidchat.R
-import com.taurin190.androidchat.domain.Room
-import com.taurin190.androidchat.ui.fragment.ChatFragment
-import com.taurin190.androidchat.ui.fragment.MainFragment
+import com.taurin190.androidchat.data.model.Room
+import com.taurin190.androidchat.ui.main.MainFragment
 
 
 class ChatActivity : AppCompatActivity() {

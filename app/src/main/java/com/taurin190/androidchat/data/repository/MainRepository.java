@@ -1,11 +1,10 @@
 package com.taurin190.androidchat.data.repository;
 
-import android.os.AsyncTask;
 import android.util.Log;
 
 import com.taurin190.androidchat.data.api.RoomApi;
-import com.taurin190.androidchat.domain.Chat;
-import com.taurin190.androidchat.domain.Room;
+import com.taurin190.androidchat.data.model.Chat;
+import com.taurin190.androidchat.data.model.Room;
 import com.taurin190.androidchat.util.SchedulerProvider;
 
 import java.util.ArrayList;

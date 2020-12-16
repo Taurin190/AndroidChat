@@ -1,6 +1,4 @@
-package com.taurin190.androidchat.domain;
-
-import com.taurin190.androidchat.domain.Chat;
+package com.taurin190.androidchat.data.model;
 
 import java.io.Serializable;
 import java.util.List;

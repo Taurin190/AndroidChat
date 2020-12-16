@@ -1,4 +1,4 @@
-package com.taurin190.androidchat.ui.helper;
+package com.taurin190.androidchat.ui.room.helper;
 
 import android.view.View;
 import android.widget.ImageView;
