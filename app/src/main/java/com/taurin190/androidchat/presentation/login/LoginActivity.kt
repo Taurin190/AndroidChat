@@ -1,6 +1,7 @@
 package com.taurin190.androidchat.presentation.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -14,9 +15,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityLoginBinding
+import com.taurin190.androidchat.presentation.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -24,11 +27,14 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         var view = binding.root
         setContentView(view)
+        auth = FirebaseAuth.getInstance()
 
         loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
                 .get(LoginViewModel::class.java)
@@ -91,7 +97,19 @@ class LoginActivity : AppCompatActivity() {
 
             binding.login.setOnClickListener {
                 binding.loading.visibility = View.VISIBLE
-                loginViewModel.login(binding.username.text.toString(), binding.password.text.toString())
+                auth.signInWithEmailAndPassword(binding.username.text.toString(), binding.password.text.toString())
+                        .addOnCompleteListener(this@LoginActivity) { task ->
+                            binding.loading.visibility = View.GONE
+                            if (task.isSuccessful) {
+                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            } else {
+                                Toast.makeText(baseContext, "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show()
+                            }
+                        }
+//                loginViewModel.login(binding.username.text.toString(), binding.password.text.toString())
             }
         }
     }
