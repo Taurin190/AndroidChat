@@ -19,7 +19,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.taurin190.androidchat.databinding.ActivityLoginBinding
 import com.taurin190.androidchat.presentation.main.MainActivity
 import com.taurin190.androidchat.presentation.register.RegisterActivity
-import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
