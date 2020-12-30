@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".presentation.register.RegisterActivity"></activity>
         <activity
             android:name=".presentation.login.LoginActivity"
-            android:label="@string/title_activity_login">
-        </activity>
+            android:label="@string/title_activity_login"></activity>
         <activity android:name=".presentation.room.RoomCreationActivity" />
         <activity
             android:name=".presentation.chat.ChatActivity"

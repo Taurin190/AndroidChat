@@ -16,9 +16,10 @@ import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-import com.taurin190.androidchat.R
 import com.taurin190.androidchat.databinding.ActivityLoginBinding
 import com.taurin190.androidchat.presentation.main.MainActivity
+import com.taurin190.androidchat.presentation.register.RegisterActivity
+import kotlinx.android.synthetic.main.activity_login.view.*
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
 
@@ -86,23 +87,18 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
                 loginPresenter.login(binding.username.text.toString(), binding.password.text.toString())
             }
         }
-    }
 
-    private fun updateUiWithUser(model: LoggedInUserView) {
-        val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
-        // TODO : initiate successful logged in experience
-        Toast.makeText(
-                applicationContext,
-                "$welcome $displayName",
-                Toast.LENGTH_LONG
-        ).show()
+        binding.register.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun showLoginFailed() {
         binding.loading.visibility = View.GONE
         Toast.makeText(baseContext, "Authentication failed.",
                 Toast.LENGTH_SHORT).show()
+        binding.password.clearFocus()
     }
 
     override fun showLoginSuccess(user: FirebaseUser) {
